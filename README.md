@@ -148,3 +148,139 @@ Risques / points à vérifier : ________________________________________________
 Décision : ☐ Favorable  ☐ À approfondir  ☐ Défavorable
 6. Conseils à l’évaluateur
 Demander pour chaque sujet une réalisation concrète : contexte, rôle exact, outils, difficultés, décisions, preuves et résultats. Prioriser le diagnostic de performance, la chaîne CI/CD de base et le provisionnement automatisé. Ajuster la pondération selon que le poste est principalement DBA ou principalement DevOps.
+
+
+
+
+
+
+
+
+**********
+
+
+
+Entretien DBA SQL Server & DevOps
+Guide recruteur • Questions, réponses attendues et notes • 60 minutes
+Candidat : ___________________________________   Date : _______________
+Évaluateur technique : _________________________   DSI : ________________
+Mode d’emploi
+Le référent DBA conduit les questions techniques ; le DSI évalue l’autonomie, la communication et les risques. Laisser le candidat expliquer son raisonnement avant de consulter la réponse. Demander systématiquement : « Qu’avez-vous personnellement réalisé ? »
+Notation : 0 = aucune réponse ; 1 = notions ; 2 = partiel/assisté ; 3 = autonome ; 4 = solide en production ; 5 = expert avec exemples vérifiables. Noter les preuves, pas seulement le vocabulaire.
+Déroulé conseillé
+0–10 min : présentation et expériences réelles (DSI + DBA)
+10–25 min : SQL Server, performance et production (DBA)
+25–40 min : DevOps, Git, pipelines et automatisation (DBA)
+40–50 min : cas pratique transversal (DBA)
+50–60 min : autonomie, questions du candidat et conclusion (DSI)
+01 · Parcours
+Question : Décrivez votre dernière mission : quel environnement SQL Server et quelles automatisations avez-vous personnellement réalisés ?
+Réponse attendue : Attendu : contexte, taille/criticité, versions, rôle exact, résultats chiffrés, incidents ou livraisons concrets.
+Relance : Relance : « Quel livrable avez-vous créé vous-même ? »
+Note :  0  /  1  /  2  /  3  /  4  /  5       Preuves / remarques : __________________________________________
+_________________________________________________________________________________
+02 · SQL Server
+Question : Une application est soudainement lente. Comment diagnostiquez-vous ?
+Réponse attendue : Attendu : impact et changements récents ; CPU, mémoire, I/O, blocages, waits ; Query Store et plans d’exécution ; hypothèse, action mesurée et validation.
+Relance : Relance : « Si le plan a changé, comment le prouvez-vous ? »
+Note :  0  /  1  /  2  /  3  /  4  /  5       Preuves / remarques : __________________________________________
+_________________________________________________________________________________
+03 · SQL Server
+Question : Quelle différence entre PAGEIOLATCH et PAGELATCH ?
+Réponse attendue : Attendu : PAGEIOLATCH = attente de lecture de page depuis le stockage ; PAGELATCH = contention sur page en mémoire. Le diagnostic et les remèdes diffèrent.
+Relance : Relance : « Que regarderiez-vous sur tempdb ? »
+Note :  0  /  1  /  2  /  3  /  4  /  5       Preuves / remarques : __________________________________________
+_________________________________________________________________________________
+04 · SQL Server
+Question : Une base est indisponible : quelles sont vos premières actions ?
+Réponse attendue : Attendu : qualifier l’impact, sécuriser et communiquer, consulter erreurs/état instance, stockage, réseau, disponibilité, RPO/RTO ; restaurer ou basculer selon architecture ; valider applicativement.
+Relance : Relance : « Comment prouvez-vous que la restauration est exploitable ? »
+Note :  0  /  1  /  2  /  3  /  4  /  5       Preuves / remarques : __________________________________________
+_________________________________________________________________________________
+05 · SQL Server
+Question : Comment concevez-vous une stratégie de sauvegarde et de restauration ?
+Réponse attendue : Attendu : FULL/DIFF/LOG selon RPO et modèle de récupération, rétention, chiffrement, stockage séparé, surveillance, tests réguliers de restauration et documentation.
+Relance : Relance : « Une sauvegarde réussie garantit-elle la restauration ? » (Non.)
+Note :  0  /  1  /  2  /  3  /  4  /  5       Preuves / remarques : __________________________________________
+_________________________________________________________________________________
+06 · DevOps
+Question : Expliquez simplement Git, CI et CD dans le contexte d’une base SQL Server.
+Réponse attendue : Attendu : Git versionne ; CI vérifie/intègre ; CD prépare ou réalise le déploiement ; scripts ou DACPAC/migrations testés et traçables. Continuous delivery ≠ continuous deployment.
+Relance : Relance : « Qui valide le passage en production ? »
+Note :  0  /  1  /  2  /  3  /  4  /  5       Preuves / remarques : __________________________________________
+_________________________________________________________________________________
+07 · DevOps
+Question : Décrivez un pipeline SQL Server que vous avez réellement construit.
+Réponse attendue : Attendu : déclencheur Git, tests, validation du changement, environnement cible, approbation, déploiement, logs, vérification et gestion des échecs ; outils précis et responsabilité personnelle.
+Relance : Relance : « Montrez-moi mentalement ses étapes de bout en bout. »
+Note :  0  /  1  /  2  /  3  /  4  /  5       Preuves / remarques : __________________________________________
+_________________________________________________________________________________
+08 · DevOps
+Question : Comment automatisez-vous une installation SQL Server sur Windows ?
+Réponse attendue : Attendu : installation silencieuse PowerShell/Ansible/DSC, prérequis, comptes de service, disques, tempdb, patching, configuration, supervision et tests post-installation.
+Relance : Relance : « Comment obtenez-vous 20 serveurs cohérents ? »
+Note :  0  /  1  /  2  /  3  /  4  /  5       Preuves / remarques : __________________________________________
+_________________________________________________________________________________
+09 · DevOps
+Question : Différence entre Terraform/OpenTofu et Ansible ?
+Réponse attendue : Attendu : Terraform/OpenTofu provisionne et suit l’état des ressources ; Ansible configure et orchestre des tâches ; rôles complémentaires, pas exclusifs.
+Relance : Relance : « Que se passe-t-il si une VM existe déjà ? »
+Note :  0  /  1  /  2  /  3  /  4  /  5       Preuves / remarques : __________________________________________
+_________________________________________________________________________________
+10 · DevOps
+Question : Comment gérez-vous les secrets dans un pipeline ?
+Réponse attendue : Attendu : jamais de mot de passe en clair dans Git ; coffre de secrets, identité à privilèges minimaux, injection à l’exécution, masquage des logs et rotation.
+Relance : Relance : « Comment faites-vous tourner le mot de passe ? »
+Note :  0  /  1  /  2  /  3  /  4  /  5       Preuves / remarques : __________________________________________
+_________________________________________________________________________________
+11 · DevOps
+Question : Le pipeline échoue après trois scripts SQL sur cinq : que faites-vous ?
+Réponse attendue : Attendu : arrêt, journalisation, état réel de la base, migrations traçables, idempotence si applicable, récupération ou correction en avant ; pas de promesse de rollback automatique universel.
+Relance : Relance : « Comment évitez-vous de rejouer un script destructif ? »
+Note :  0  /  1  /  2  /  3  /  4  /  5       Preuves / remarques : __________________________________________
+_________________________________________________________________________________
+12 · Cas pratique
+Question : Nous voulons provisionner une VM VMware, installer SQL Server, créer une base et activer sauvegardes et supervision. Dessinez votre solution.
+Réponse attendue : Attendu : demande standardisée → Git/pipeline → Terraform/OpenTofu avec vCenter → PowerShell/Ansible → scripts SQL → coffre de secrets → tests, sauvegardes, supervision et restitution ; gestion de l’état, droits et erreurs.
+Relance : Relance : « Si le pipeline tombe après la création de la VM, comment reprenez-vous sans doublon ? »
+Note :  0  /  1  /  2  /  3  /  4  /  5       Preuves / remarques : __________________________________________
+_________________________________________________________________________________
+13 · DSI
+Question : Vous arrivez dans une équipe où tout est manuel. Que faites-vous les 90 premiers jours ?
+Réponse attendue : Attendu : inventaire, cartographie des risques, priorisation, standards, petit POC, indicateurs, documentation, accompagnement des équipes et déploiement progressif.
+Relance : Relance : « Quel premier résultat livrable au bout d’un mois ? »
+Note :  0  /  1  /  2  /  3  /  4  /  5       Preuves / remarques : __________________________________________
+_________________________________________________________________________________
+Grille de synthèse
+Domaine
+Poids
+Note /5
+SQL Server / production
+35 %
+____ / 5
+DevOps / CI-CD
+25 %
+____ / 5
+Automatisation / IaC
+20 %
+____ / 5
+Raisonnement / gestion des risques
+10 %
+____ / 5
+Communication / autonomie
+10 %
+____ / 5
+
+Score pondéré : ______ / 100      Avis : ☐ Favorable  ☐ Réservé  ☐ Défavorable
+Forces : __________________________________________________________________________
+Risques / points à vérifier : __________________________________________________________
+Recommandation au DSI : __________________________________________________________
+Aide-mémoire pour l’évaluateur non spécialiste DevOps
+Git : historique des scripts et revue des modifications.
+Pipeline CI/CD : suite d’étapes de validation et de déploiement automatisées.
+Terraform/OpenTofu : provisionnement d’infrastructure et gestion de son état.
+Ansible / PowerShell : configuration et automatisation des systèmes.
+Idempotence : relancer une opération sans effets indésirables ni doublons.
+Drapeaux rouges : secrets dans Git, absence de tests, aucun exemple concret, rollback supposé toujours automatique.
+Important : cette grille mesure l’expérience déclarée et le raisonnement. Pour un poste très DevOps, compléter par un exercice pratique revu par une personne compétente dans les outils utilisés.
+
